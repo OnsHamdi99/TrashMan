@@ -1,4 +1,5 @@
 import IntroScene from './src/scene/IntroScene.js';
+console.log("Hello World");
 import {soundLoader} from './src/sounds.js';
 import {GameState} from './src/utils.js';
 let scene; 
