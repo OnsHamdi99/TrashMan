@@ -1,4 +1,4 @@
-import introScene from './src/scene/IntroScene.js';
+import IntroScene from './src/scene/IntroScene.js';
 import {soundLoader} from './src/sounds.js';
 import {GameState} from './src/utils.js';
 let scene; 
@@ -8,7 +8,7 @@ var buttons = document.querySelectorAll('button');
 let canvas = document.getElementById("#myCanvas");
 function startGame(){
     engine = new BABYLON.Engine(canvas, true);
-    introScene = new IntroScene(null,engine, canvas);
+    introScene = new IntroScene(null, engine, canvas);
     modifySettings();
     gameLoop();
     setTimeout(() => {
