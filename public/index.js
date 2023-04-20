@@ -1,7 +1,7 @@
 import IntroScene from './src/scene/IntroScene.js';
-console.log("Hello World");
 import {soundLoader} from './src/sounds.js';
 import {GameState} from './src/utils.js';
+
 let scene; 
 let engine;
 var buttons = document.querySelectorAll('button');
@@ -9,7 +9,8 @@ var buttons = document.querySelectorAll('button');
 let canvas = document.getElementById("#myCanvas");
 function startGame(){
     engine = new BABYLON.Engine(canvas, true);
-    introScene = new IntroScene(null, engine, canvas);
+
+    scene = new IntroScene( engine, canvas);
     modifySettings();
     gameLoop();
     setTimeout(() => {
@@ -24,13 +25,13 @@ function gameLoop() {
     engine.runRenderLoop(() => {
         switch(GameState.state) {
             case GameState.IntroScene:
-                introScene.mainMenu.then(() => {
-                    introScene.render();
+                scene.mainMenu().then(() => {
+                    scene.render();
                 });
                 GameState.state= GameState.levelsMenu;
                 break;
             case GameState.levelsMenu:
-                introScene.render(); 
+                IntroScene.render(); 
                 break;
             case GameState.gameOver : 
                 introScene.gameOverMenu.then(() => {

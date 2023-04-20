@@ -15,8 +15,9 @@ export default class AbstractScene extends BABYLON.Scene {
         this.player = null; 
         this.center = null;
         this.currentMusic = undefined; 
+        this.currentLevel = undefined;
         this.enablePhysics(new BABYLON.Vector3(0, -9.81, 0), new BABYLON.CannonJSPlugin());
-        this.createBackground();
+ ;
     }
     createLight() { 
         light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), this);
@@ -24,6 +25,7 @@ export default class AbstractScene extends BABYLON.Scene {
         if (this.currentLevel === GameLevel.getLevelByName("level1")){
             this.currentMusic = soundLoader.levelOneMusic;
         }
+       
         return this.light;
     }
 
