@@ -1,7 +1,6 @@
-import {soundLoader} from './sounds.js';
 
 class GameState {
-    static IntroScene = 0;
+    static introScene = 0;
     static levelsMenu =1;
     static LevelOne = 2;
     static win = 3; 

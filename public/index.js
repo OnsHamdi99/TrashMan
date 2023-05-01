@@ -1,38 +1,43 @@
-import IntroScene from './src/scene/IntroScene.js';
+import {IntroScene} from './src/scene/IntroScene.js';
 import {soundLoader} from './src/sounds.js';
 import {GameState} from './src/utils.js';
+import { Configuration } from "./configuration.js";
 
 let scene; 
 let engine;
-var buttons = document.querySelectorAll('button');
+let menuscene;
 
-let canvas = document.getElementById("#myCanvas");
+let configuration;
 function startGame(){
-    engine = new BABYLON.Engine(canvas, true);
+    let canvas = document.getElementById("myCanvas");  //  Get the canvas element
+    // Get the dimensions of the browser window
 
-    scene = new IntroScene( engine, canvas);
-    modifySettings();
+
+    configuration = new Configuration(canvas);  //  configuration
+
+ //   new IntroScene(configuration); 
+    menuscene = new IntroScene(configuration);
+  
     gameLoop();
     setTimeout(() => {
-        if (!soundLoader.currentMusic) {
-            soundLoader.PlaySoundAction(soundLoader.introMusic);
-            soundLoader.currentMusic = soundLoader.introMusic;
-        }
+       
     },200);
 }
 
 function gameLoop() {
+    GameState.state = GameState.introScene; 
+    console.log("GAME STATE: " + GameState.state);
     engine.runRenderLoop(() => {
+      
         switch(GameState.state) {
-            case GameState.IntroScene:
-                scene.mainMenu().then(() => {
+            case GameState.introScene:
+                soundLoader.PlaySoundAction(soundLoader.introMusic);
+                menuscene.mainMenu().then(() => {
+                    console.log("INSIDE MAIN MENU");
                     scene.render();
                 });
-                GameState.state= GameState.levelsMenu;
                 break;
-            case GameState.levelsMenu:
-                IntroScene.render(); 
-                break;
+
             case GameState.gameOver : 
                 introScene.gameOverMenu.then(() => {
                     GameState.state = GameState.IntroScene;
@@ -51,18 +56,10 @@ function gameLoop() {
     });
 }
 
-function modifySettings() {
-    window.addEventListener("resize", () => {
-        engine.resize();
-    });
-    for (var i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('click', function() {
-            soundLoader.PlaySoundAction(soundLoader.buttonClick);
-        });
-    }
-}
 
-window.onload = () => {
+window.onload = startGame;
 
-    startGame();
-}
+// Watch for browser/canvas resize events
+window.addEventListener("resize", () => {
+    configuration.engine.resize()
+});

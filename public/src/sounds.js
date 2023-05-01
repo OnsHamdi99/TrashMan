@@ -34,25 +34,19 @@ class SoundLoader {
         this.gameOver.volume = 0.4;
         this.gameOver.alreadyPlayed = false;
         this.effects.push(this.gameOver);
+     
     }
 
     PlaySoundAction(sound) {
-        if (!sound.alreadyPlayed) {
-            sound.alreadyPlayed = true ; 
-            setTimeout(() => {
-                sound.alreadyPlayed = false;
-            }, 100);
-
-            if(sound.paused) {
-                sound.currentTime = 0; // restart the sound
-                sound.play();
-            }
-            else {
-                sound.currentTime = 0;
-            }
+        sound.currentTime = 0; // restart the sound
+        sound.play();
+      
         } 
-    } 
 
+    StopSoundAction(sound) {
+        sound.pause();
+        sound.currentTime = 0;
+    }
     resetAllSound() {
         for (let i = 0; i <this.musics.length; i++) {
             this.musics[i].pause();
@@ -61,8 +55,7 @@ class SoundLoader {
             this.effects[i].pause();
         }
     }
-
-        
+   
 }
         
 export const soundLoader = new SoundLoader();
