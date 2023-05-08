@@ -15,6 +15,11 @@ class SoundLoader {
         this.levelOneMusic.alreadyPlayed = false;
         this.musics.push(this.levelOneMusic);
 
+        this.levelTwoMusic = new Audio('../assets/sounds/levelTwo.mp3');
+        this.levelTwoMusic.volume = 0.2;
+        this.levelTwoMusic.alreadyPlayed = false;
+        this.musics.push(this.levelTwoMusic);
+        
         this.buttonClick = new Audio('../assets/sounds/clickButton.wav');
         this.buttonClick.volume = 0.4;
         this.buttonClick.alreadyPlayed = false;
