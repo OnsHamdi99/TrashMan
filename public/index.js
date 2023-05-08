@@ -6,6 +6,7 @@ import { Configuration } from "./configuration.js";
 let scene; 
 let engine;
 let menuscene;
+let inputStates = {};
 
 let configuration;
 function startGame(){
@@ -17,6 +18,8 @@ function startGame(){
 
  //   new IntroScene(configuration); 
     menuscene = new IntroScene(configuration);
+
+ 
   
     gameLoop();
     setTimeout(() => {
@@ -58,8 +61,3 @@ function gameLoop() {
 
 
 window.onload = startGame;
-
-// Watch for browser/canvas resize events
-window.addEventListener("resize", () => {
-    configuration.engine.resize()
-});

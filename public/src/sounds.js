@@ -34,7 +34,11 @@ class SoundLoader {
         this.gameOver.volume = 0.4;
         this.gameOver.alreadyPlayed = false;
         this.effects.push(this.gameOver);
-     
+
+        this.gameWon = new Audio('../assets/sounds/gameWon.wav');
+        this.gameWon.volume = 0.8;
+        this.gameWon.alreadyPlayed = false;
+        this.effects.push(this.gameWon);
     }
 
     PlaySoundAction(sound) {

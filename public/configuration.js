@@ -18,6 +18,7 @@ var windowHeight = window.innerHeight;
 // Set the size of the Babylon.js canvas to the window dimensions
 canvas.width = windowWidth;
 canvas.height = windowHeight;
+
     }
 
     /**
