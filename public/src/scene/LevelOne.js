@@ -26,13 +26,18 @@ class LevelOne {
 
         instance.creerElementsScene();  //  Call the createScene function
 
-        instance.configuration.engine.runRenderLoop(function () {  //  Register a render loop to repeatedly render the scene
+        instance.configuration.engine.runRenderLoop(function () { //  Register a render loop to repeatedly render the scene
+            let main = instance.scene.getMeshByName("heroMain");
+
+            if (main)
+                main.move();
+                  
             instance.renderScene()
         });
     }
 
     creerElementsScene() {
-
+        this.getHero();
         this.creerCamera();
         this.creerLumiere();
         this.greateGround();
@@ -54,14 +59,60 @@ class LevelOne {
     }
     greateGround() {
         const groundWidth = 10;
-const groundLength = 600;
+        const groundLength = 600;
 
-const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: groundWidth, height: groundLength });
+        const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: groundWidth, height: groundLength });
 
         
     }
-    getHero(){
+    getHero() {
+        BABYLON.SceneLoader.ImportMesh("", "./../assets/models/", "male.glb", this.scene, (newMeshes, particleSystems, skeletons, animationGroups) => {
+            let main = newMeshes[0];
+            main.position.x = 0;
+            main.position.z = -3;
+            main.position.y = 1.4;
 
+            //main.frontVector = new BABYLON.Vector3(0, 0, 1);
+
+            // main.rotation.x = Math.PI;
+            // main.rotation.y = 0;
+            // main.rotation.z = Math.PI;
+
+            main.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+
+            main.name = "heroMain";
+
+            let a = this.scene.getAnimationGroupByName("Jump");
+            a.start(true, 1.0, a.from, a.to, false);
+
+            main.move = function () {
+                main.rotation.z += 0.05;
+
+                if (main.rotation.z >= 0 && main.rotation.z <= 10) {
+                    main.position.y = Math.sin(main.rotation.z) * 1 + 2.8;
+                    main.position.x = 0;
+                    // let b = this.scene.getAnimationGroupByName("Jump");
+                    // b.start(true, 1.0, a.from, a.to, false);
+                }
+
+                if (main.rotation.z > 10 && main.rotation.z <= 20) {
+                    main.position.x = Math.sin(main.rotation.z) * 1.4 + 1.4;
+                    // let c = this.scene.getAnimationGroupByName("Run");
+                    // c.start(true, 1.0, a.from, a.to, false);
+                }
+
+                if (main.rotation.z > 20 && main.rotation.z <= 30) {
+                    main.position.x = -Math.sin(main.rotation.z) * 1.4 - 1.4;
+                    // let d = this.scene.getAnimationGroupByName("Run");
+                    // d.start(true, 1.0, a.from, a.to, false);
+                }
+
+                if (main.rotation.z >= 30) {
+                    main.rotation.z = main.rotation.z - 30;
+                }
+
+            }
+        });
     }
     /**
      * charger le rendu de la scene
