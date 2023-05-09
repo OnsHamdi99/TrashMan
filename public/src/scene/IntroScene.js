@@ -1,4 +1,4 @@
-
+import { LevelTwo } from './LevelTwo.js';
 import {LevelOne} from './LevelOne.js';
 import {soundLoader} from '../sounds.js';
 import {GameState} from '../utils.js';
@@ -82,7 +82,7 @@ playMusic(){
         this.levelsMenuActive = false;
 
 
-        const background = new BABYLON.GUI.Image("background", "./../assets/images/MAIN_PAGE.png");
+        const background = new BABYLON.GUI.Image("background", "./assets/images/MAIN_PAGE.png");
         
     //    background.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
         const titleText = new BABYLON.GUI.TextBlock();
@@ -120,7 +120,7 @@ playMusic(){
             this.levelsMenuActive = true;
           
             // Create background image
-            const background = new BABYLON.GUI.Image("background", "./../assets/images/MAIN_PAGE.png");
+            const background = new BABYLON.GUI.Image("background", "./assets/images/MAIN_PAGE.png");
             background.width = 1;
             background.height = 1;
             this.advancedTexture.addControl(background);
@@ -148,7 +148,29 @@ playMusic(){
                 new LevelOne(this.configuration);
 
             });
-        
+            const level2Button = BABYLON.GUI.Button.CreateSimpleButton("level2Button", "Level 2");
+            level2Button.width = "150px";
+            level2Button.height = "30px";
+            level2Button.color = "white";
+            level2Button.background = "blue";
+            level2Button.top = "50px";
+            level2Button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+            level2Button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+            this.advancedTexture.addControl(level2Button);
+            level2Button.onPointerUpObservable.add(() => { 
+                soundLoader.PlaySoundAction(soundLoader.buttonClick);
+                GameState.state = GameState.LevelTwo;
+                this.advancedTexture.dispose();
+                this.configuration.createNewEngine();
+                this.configuration.scenes[0].dispose();
+                this.mainMenuActive = false;
+                this.levelsMenuActive = false;
+                this.scene.dispose();
+                soundLoader.StopSoundAction(soundLoader.introMusic);
+                soundLoader.PlaySoundAction(soundLoader.levelTwoMusic);
+                new LevelTwo(this.configuration);
+
+            });
 
     }
 } export {IntroScene};
