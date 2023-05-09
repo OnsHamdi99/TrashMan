@@ -82,7 +82,7 @@ playMusic(){
         this.levelsMenuActive = false;
 
 
-        const background = new BABYLON.GUI.Image("background", "./../assets/images/MAIN_PAGE.png");
+        const background = new BABYLON.GUI.Image("background", "./assets/images/MAIN_PAGE.png");
         
     //    background.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
         const titleText = new BABYLON.GUI.TextBlock();
@@ -120,7 +120,7 @@ playMusic(){
             this.levelsMenuActive = true;
           
             // Create background image
-            const background = new BABYLON.GUI.Image("background", "./../assets/images/MAIN_PAGE.png");
+            const background = new BABYLON.GUI.Image("background", "./assets/images/MAIN_PAGE.png");
             background.width = 1;
             background.height = 1;
             this.advancedTexture.addControl(background);

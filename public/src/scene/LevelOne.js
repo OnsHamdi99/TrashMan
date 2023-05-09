@@ -71,7 +71,7 @@ class LevelOne {
     }
     greateGround() {
         const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", this.scene);
-        groundMaterial.diffuseTexture = new BABYLON.Texture("./../assets/images/pavement.jpg", this.scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement.jpg", this.scene);
         const groundWidth = 10;
         const groundLength = 400;
 
@@ -92,7 +92,7 @@ particleSystem.start();
 
     }
     createPortal(){
-      BABYLON.SceneLoader.ImportMesh("", "./../assets/models/", "portalLevel1.glb", this.scene, (meshes) => {
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "portalLevel1.glb", this.scene, (meshes) => {
         const portal = meshes[0];
         portal.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
         portal.position = new BABYLON.Vector3(0, -1, -198);
@@ -105,7 +105,7 @@ particleSystem.start();
       const treeDepth = 0.9;
     
       // Load the tree model
-      BABYLON.SceneLoader.ImportMesh("", "./../assets/models/", "tree.glb", this.scene, (meshes) => {
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "tree.glb", this.scene, (meshes) => {
         this.tree = meshes[0];
     
         // Position trees on the left side of the ground
@@ -139,7 +139,7 @@ particleSystem.start();
     
   async getHero() {
         let hero = await BABYLON.SceneLoader.ImportMeshAsync(
-            "", "./../assets/models/", "male.glb", this.scene);
+            "", "./assets/models/", "male.glb", this.scene);
             if (hero.meshes.length > 0) {
             let main = hero.meshes[0];
             main.position.x = 0;

@@ -64,7 +64,7 @@ class LevelTwo {
     }
     greateGround() {
         const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", this.scene);
-        groundMaterial.diffuseTexture = new BABYLON.Texture("./../assets/images/pavement.jpg", this.scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement.jpg", this.scene);
         const groundWidth = 10;
         const groundLength = 400;
 
@@ -76,7 +76,7 @@ class LevelTwo {
     }
     async getHero() {
         let hero = await BABYLON.SceneLoader.ImportMeshAsync(
-            "", "./../assets/models/", "male.glb", this.scene);
+            "", "./assets/models/", "male.glb", this.scene);
             if (hero.meshes.length > 0) {
             let main = hero.meshes[0];
             main.position.x = 0;
