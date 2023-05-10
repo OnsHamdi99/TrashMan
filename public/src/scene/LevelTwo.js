@@ -37,9 +37,9 @@ class LevelTwo {
       console.log(this.camera);
     }
 
-    instance.creerElementsScene(); 
+    instance.creerElementsScene();
 
-    instance.configuration.engine.runRenderLoop(function () { 
+    instance.configuration.engine.runRenderLoop(function () {
       instance.renderScene()
     });
   }
@@ -55,8 +55,8 @@ class LevelTwo {
   creerLumiere() {
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), this.scene);
     light.intensity = 0.7;
-    
-    const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", { size: 1000}, this.scene);
+
+    const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", { size: 1000 }, this.scene);
     const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", this.scene);
     skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./assets/images/skybox/skybox", this.scene);
     skybox.material = skyboxMaterial;
@@ -74,19 +74,19 @@ class LevelTwo {
   }
   createSkybox(scene) {
 
-      var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
-      var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxMaterial", scene);
-      skyboxMaterial.backFaceCulling = false;
-      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
-        "./assets/images/cubemap/",
-        scene
-      );
-      skyboxMaterial.reflectionTexture.coordinatesMode =
-        BABYLON.Texture.SKYBOX_MODE;
-      skyboxMaterial.disableLighting = true;
-      skybox.material = skyboxMaterial;
-    }
-  
+    var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
+    var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxMaterial", scene);
+    skyboxMaterial.backFaceCulling = false;
+    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
+      "./assets/images/cubemap/",
+      scene
+    );
+    skyboxMaterial.reflectionTexture.coordinatesMode =
+      BABYLON.Texture.SKYBOX_MODE;
+    skyboxMaterial.disableLighting = true;
+    skybox.material = skyboxMaterial;
+  }
+
   greateGround() {
     const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", this.scene);
     groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement3.jpg", this.scene);
@@ -106,7 +106,7 @@ class LevelTwo {
   }
 
   createObstacles() {
-    this.createTrees(2.5, 170, 0, 0.5,"tree1");
+    this.createTrees(2.5, 170, 0, 0.5, "tree1");
 
     this.createTrees(2.9, -7, 0, 0.5, "tree2");
     this.createTrees(2.9, 0, 0, 0.7, "tree3");
@@ -116,13 +116,13 @@ class LevelTwo {
     this.createTrees(-2.9, 93, 0, 0.5, "tree6");
     this.createTrees(-2.9, 100, 0, 0.7, "tree7");
     this.createTrees(0, 107, 0, 0.4, "tree8");
-    this.createTrees(-2.9, 112, 0, 0.4  , "tree9");
-    
-    this.createTrees(-2.9, -107, 0, 0.5 , "tree10");
-    this.createTrees(-2.9, -100, 0, 0.7 , "tree11");
-    this.createTrees(0, -93, 0, 0.4 , "tree12");
-    this.createTrees(-2.9, -88, 0, 0.4  , "tree13");
-    
+    this.createTrees(-2.9, 112, 0, 0.4, "tree9");
+
+    this.createTrees(-2.9, -107, 0, 0.5, "tree10");
+    this.createTrees(-2.9, -100, 0, 0.7, "tree11");
+    this.createTrees(0, -93, 0, 0.4, "tree12");
+    this.createTrees(-2.9, -88, 0, 0.4, "tree13");
+
     this.createtrash(2.8, -190, 0, 0.09, "trash1");
     this.createtrash(2.8, 70, 0, 0.09, "trash2");
     this.createtrash(2.8, 20, 0, 0.09, "trash3");
@@ -171,40 +171,40 @@ class LevelTwo {
     this.createBushes(-2.9, -55, 0.4, 0.01, "bush12");
     this.createBushes(2.9, -50, 0.4, 0.01, "bush13");
     this.endLoading = true;
-    
-  }
-getObstacles() {
-  let tree1=this.scene.getMeshByName("tree1"); 
-  let tree2=this.scene.getMeshByName("tree2");
-  let tree3=this.scene.getMeshByName("tree3");
-  let tree4=this.scene.getMeshByName("tree4");
-  let tree5=this.scene.getMeshByName("tree5");
-  let tree6=this.scene.getMeshByName("tree6");
-  let tree7=this.scene.getMeshByName("tree7");
-  let tree8=this.scene.getMeshByName("tree8");
-  let tree9=this.scene.getMeshByName("tree9");
-  let tree10=this.scene.getMeshByName("tree10");
-  let tree11=this.scene.getMeshByName("tree11");
-  let tree12=this.scene.getMeshByName("tree12");
-  let tree13=this.scene.getMeshByName("tree13");
-  let bush1=this.scene.getMeshByName("bush1");
-  let bush2=this.scene.getMeshByName("bush2");
-  let bush3=this.scene.getMeshByName("bush3");
-  let bush4=this.scene.getMeshByName("bush4");
-  let bush5=this.scene.getMeshByName("bush5");
-  let bush6=this.scene.getMeshByName("bush6");
-  let bush7=this.scene.getMeshByName("bush7");
-  let bush8=this.scene.getMeshByName("bush8");
-  let bush9=this.scene.getMeshByName("bush9");
-  let bush10=this.scene.getMeshByName("bush10");
-  let bush11=this.scene.getMeshByName("bush11");
-  let bush12=this.scene.getMeshByName("bush12");
-  let bush13=this.scene.getMeshByName("bush13");
-  return [tree1,tree2,tree3,tree4,tree5,tree6,tree7,tree8,tree9,tree10,tree11,tree12,tree13,bush1,bush2,bush3,bush4,bush5,bush6,bush7,bush8,bush9,bush10,bush11,bush12,bush13];
-}
 
-getTrashTab(){
-   let trash1 = this.scene.getMeshByName("trash1");
+  }
+  getObstacles() {
+    let tree1 = this.scene.getMeshByName("tree1");
+    let tree2 = this.scene.getMeshByName("tree2");
+    let tree3 = this.scene.getMeshByName("tree3");
+    let tree4 = this.scene.getMeshByName("tree4");
+    let tree5 = this.scene.getMeshByName("tree5");
+    let tree6 = this.scene.getMeshByName("tree6");
+    let tree7 = this.scene.getMeshByName("tree7");
+    let tree8 = this.scene.getMeshByName("tree8");
+    let tree9 = this.scene.getMeshByName("tree9");
+    let tree10 = this.scene.getMeshByName("tree10");
+    let tree11 = this.scene.getMeshByName("tree11");
+    let tree12 = this.scene.getMeshByName("tree12");
+    let tree13 = this.scene.getMeshByName("tree13");
+    let bush1 = this.scene.getMeshByName("bush1");
+    let bush2 = this.scene.getMeshByName("bush2");
+    let bush3 = this.scene.getMeshByName("bush3");
+    let bush4 = this.scene.getMeshByName("bush4");
+    let bush5 = this.scene.getMeshByName("bush5");
+    let bush6 = this.scene.getMeshByName("bush6");
+    let bush7 = this.scene.getMeshByName("bush7");
+    let bush8 = this.scene.getMeshByName("bush8");
+    let bush9 = this.scene.getMeshByName("bush9");
+    let bush10 = this.scene.getMeshByName("bush10");
+    let bush11 = this.scene.getMeshByName("bush11");
+    let bush12 = this.scene.getMeshByName("bush12");
+    let bush13 = this.scene.getMeshByName("bush13");
+    return [tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, tree11, tree12, tree13, bush1, bush2, bush3, bush4, bush5, bush6, bush7, bush8, bush9, bush10, bush11, bush12, bush13];
+  }
+
+  getTrashTab() {
+    let trash1 = this.scene.getMeshByName("trash1");
     let trash2 = this.scene.getMeshByName("trash2");
     let trash3 = this.scene.getMeshByName("trash3");
     let trash4 = this.scene.getMeshByName("trash4");
@@ -213,9 +213,9 @@ getTrashTab(){
     let trash7 = this.scene.getMeshByName("trash7");
     let trash8 = this.scene.getMeshByName("trash8");
     let trash9 = this.scene.getMeshByName("trash9");
-    return [trash1,trash2,trash3,trash4,trash5,trash6,trash7,trash8,trash9];
-}
-  createTrees(x, y, z ,size, name) {
+    return [trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9];
+  }
+  createTrees(x, y, z, size, name) {
     BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "tree.glb", this.scene, (meshes) => {
       let tree = meshes[0];
       tree.position.x = x;
@@ -226,20 +226,23 @@ getTrashTab(){
       tree.checkCollisions = true;
       tree.computeWorldMatrix(true);
       let boundingBox = tree.getBoundingInfo().boundingBox;
-  
-      // Add the bounding box to the tree mesh as a child
-      let boundingBoxMesh = BABYLON.MeshBuilder.CreateBox("boundingBox", { size: 1 }, this.scene);
-      boundingBoxMesh.parent = tree;
-      boundingBoxMesh.visibility = 0.5;
-      boundingBoxMesh.isPickable = false;
-      boundingBoxMesh.scaling = new BABYLON.Vector3(boundingBox.maximumWorld.x - boundingBox.minimumWorld.x, boundingBox.maximumWorld.y - boundingBox.minimumWorld.y, boundingBox.maximumWorld.z - boundingBox.minimumWorld.z);
-  
+
+      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBox", { height: 7, depth: 2, width: 2 }, this.scene);
+      collideBox.checkCollisions = true;
+      collideBox.position = new BABYLON.Vector3(x, z, y);
+
+      let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
+      collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
+      collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
+      collideBoxMaterial.alpha = 0.5;
+      collideBox.material = collideBoxMaterial;
+
     });
 
     this.isTreeLoaded = true;
   }
 
-  createtrash(x, y, z ,size, name) {
+  createtrash(x, y, z, size, name) {
     BABYLON.SceneLoader.ImportMesh("", "./assets/trashItems/", "sardina_2022.glb", this.scene, (meshes) => {
       let sardina = meshes[0];
       sardina.position.x = x;
@@ -247,24 +250,45 @@ getTrashTab(){
       sardina.position.y = z;
       sardina.scaling = new BABYLON.Vector3(size, size, size);
       sardina.name = name;
+
+      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBox", { height: 1.5, depth: 2, width: 2 }, this.scene);
+      collideBox.checkCollisions = true;
+      collideBox.position = new BABYLON.Vector3(x, z, y);
+
+      let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
+      collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
+      collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
+      collideBoxMaterial.alpha = 0.5;
+      collideBox.material = collideBoxMaterial;
     });
+
 
     this.isSardinaLoaded = true;
   }
-  
-  createGrass(x, y, z ,size) {
+
+  createGrass(x, y, z, size) {
     BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "grass.glb", this.scene, (meshes) => {
       let grass = meshes[0];
       grass.position.x = x;
       grass.position.z = y;
       grass.position.y = z;
       grass.scaling = new BABYLON.Vector3(size, size, size);
+
+      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBox", { height: 3.5, depth: 2, width: 2 }, this.scene);
+      collideBox.checkCollisions = true;
+      collideBox.position = new BABYLON.Vector3(x, z, y);
+
+      let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
+      collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
+      collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
+      collideBoxMaterial.alpha = 0.5;
+      collideBox.material = collideBoxMaterial;
     });
 
     this.isGrassLoaded = true;
   }
 
-  createBushes(x, y, z ,size, name) {
+  createBushes(x, y, z, size, name) {
     BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "bush.glb", this.scene, (meshes) => {
       let bush = meshes[0];
       bush.position.x = x;
@@ -282,7 +306,7 @@ getTrashTab(){
     if (hero.meshes.length > 0) {
       let main = hero.meshes[0];
       main.position.x = 0;
-      main.position.z = 200;
+      main.position.z = 196.6;
       main.position.y = 1.4;
 
       main.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
@@ -292,6 +316,7 @@ getTrashTab(){
       main.speed = 0.17;
 
       let check = false;
+      let check2 = false;
 
       main.move = () => {
 
@@ -303,14 +328,33 @@ getTrashTab(){
         let trash = this.getTrashTab();
         let tree1 = this.scene.getMeshByName("tree1");
 
-        
         if (this.inputStates.up) {
-          console.log("in move function : up");
+          check = true;
+        }
+
+        if (check) {
+          //console.log("in move function : up");
           let a = this.scene.getAnimationGroupByName("Run");
           a.start(false, 1.0, a.from, a.to, false);
           movementVector.z -= 0.1;
-          //console.log(main.position.z);
+          //console.log(main.checkCollisions);
+          main.onCollideObservable.add(
+            function () {
+              check2 = true;
+              console.log(check2);
+            }
+          );
           this.inputStates.up = false;
+        }
+
+        if (check2) {
+          this.configuration.scenes[0].dispose();
+          soundLoader.StopSoundAction(soundLoader.levelTwoMusic);
+          soundLoader.PlaySoundAction(soundLoader.gameWon);
+          this.configuration.createNewEngine();
+          this.scene.dispose();
+          soundLoader.PlaySoundAction(soundLoader.introMusic);
+          new LevelTwo(this.configuration);
         }
 
         if (this.inputStates.left) {
@@ -375,7 +419,7 @@ getTrashTab(){
 
       return main;
     }
-  
+
   }
   /**
    * charger le rendu de la scene
