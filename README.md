@@ -27,27 +27,27 @@ Un des niveaux est situé dans les rues de Paris, en référence aux grèves de 
 
 ## Animations du personnage
 ### Idle
-<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-CU3L.png" alt="PersoIdle" width="300px"></div>
 Le personnage est immobile, attendant les instructions du joueur.
+<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-CU3L.png" alt="PersoIdle" width="500px"></div>
 
 ### Running
-<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-SHHA.png" alt="PersoRunning" width="300px"></div>
 Le personnage court pour ramasser les déchets.
+<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-SHHA.png" alt="PersoRunning" width="500px"></div>
 
 ### Jumping
-<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-Q3J6.png" alt="PersoJumping" width="300px"></div>
 Le personnage saute pour éviter les obstacles.
+<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-Q3J6.png" alt="PersoJumping" width="500px"></div>
 
 ### Falling
-<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-67Z2.png" alt="PersoFalling" width="300px"></div>
 Le personnage tombe et c'est le game over.
+<div style="float:left; margin-right: 10px;"><img src="https://wmpics.space/di-67Z2.png" alt="PersoFalling" width="500px"></div>
 
-## Difficultés rencontrées :
+## Difficultés rencontrées
 
 - Pour éviter la duplication de code, on a souhaité utiliser une classe abstraite et des classes héritées, mais a rencontré des difficultés techniques qui ont finalement conduit à la création de classes séparément.
 - C'était la première fois que nous créons un jeu, ce qui a entraîné des difficultés dans l'apprentissage de la manipulation des mouvements.
 
-## Problèmes notés :
+## Problèmes notés
 
 - Les scènes prenaient du temps à charger, ce qui pouvait causer de l'impatience chez les joueurs.
 - Il y avait beaucoup de duplication de code, ce qui rendait le code plus difficile à maintenir.
