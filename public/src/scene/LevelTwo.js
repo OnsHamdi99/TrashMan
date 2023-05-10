@@ -17,7 +17,6 @@ class LevelTwo {
     this.camera = null;
     this.inputStates = {};
     this.configureAssetManager();  //  Configure la scene et afficher le rendu à interval réguliers
-    let tree;
     this.isTreeLoaded = false;
     this.isGrassLoaded = false;
     this.isBushLoaded = false;
@@ -386,7 +385,7 @@ class LevelTwo {
         score.text = "SCORE = " + this.score;
         score.fontSize = "35px";
         score.color = "white";
-        score.top = "420px";
+        score.top = "-360px";
         score.left = "100px";
         score.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_DOWN;
         score.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_DOWN;
@@ -431,7 +430,7 @@ class LevelTwo {
             score.text = "SCORE : " + this.score;
             score.fontSize = "35px";
             score.color = "white";
-            score.top = "420px";
+            score.top = "-360px";
             score.left = "100px";
             score.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_DOWN;
             score.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_DOWN;
