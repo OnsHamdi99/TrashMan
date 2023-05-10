@@ -11,7 +11,8 @@ Nous espérons que vous apprécierez jouer à TrashMan et que vous pourrez en ap
 TrashMan est un jeu 3D éducatif et amusant, conçu pour sensibiliser les joueurs aux enjeux environnementaux et leur apprendre comment trier les déchets. Dans ce jeu, vous incarnez un héros appelé TrashMan, dont la mission est de parcourir les rues pour ramasser les déchets qui y traînent.
 
 L'inspiration pour ce jeu est venue du personnage de Batman et de son amour pour la ville de Gotham. En tant que les créateurs de TrashMan nous avons décidé de créer un jeu qui mettait en avant la protection de l'environnement et la lutte contre les déchets, tout en s'inspirant de l'univers de Batman.
-
+# Gameplay link
+https://www.awesomescreenshot.com/video/17288836?key=a187fe15fa205b7fe0535c188f5864c7
 # Screenshots
 
 ## Main page
