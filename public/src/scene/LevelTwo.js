@@ -385,7 +385,7 @@ class LevelTwo {
         score.text = "SCORE = " + this.score;
         score.fontSize = "35px";
         score.color = "white";
-        score.top = "-360px";
+        score.top = "-260px";
         score.left = "100px";
         score.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_DOWN;
         score.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_DOWN;
@@ -430,7 +430,7 @@ class LevelTwo {
             score.text = "SCORE : " + this.score;
             score.fontSize = "35px";
             score.color = "white";
-            score.top = "-360px";
+            score.top = "-260px";
             score.left = "100px";
             score.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_DOWN;
             score.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_DOWN;
