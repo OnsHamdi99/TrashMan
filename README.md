@@ -54,11 +54,14 @@ Le personnage tombe et c'est le game over.
 - La taille de l'écran ne s'adaptait pas aux changements, ce qui pouvait causer des problèmes de visibilité pour les joueurs.
 - Les items à collecter ne disparaissent pas après pick up
 - La skybox ne s'affiche pas lorsque sur le lien d'hébergement, mais s'affiche localement
+-
+### Gestion des collisions avec une box 
+![image](https://github.com/OnsHamdi99/TrashMan/assets/77619552/0a27f9ca-00c2-4536-ad59-8833fe9b8fba)
 
 ## Ressources
 
 Pour les modèles 3D Valeria Lapshina a réalisé le modèle du mesh à l'aide de Blender, les modèles de déchets et d'obstacles on a pris d'une [ressource](https://sketchfab.com/3d-models) libre.
-Les [musiques](https://99sounds.org/free-sound-effects/) sont libre de droit.
+Les [musiques](https://99sounds.org/free-sound-effects/) sont libres de droit.
 
 Pour le code nous nous sommes appuyés sur le [cours](https://github.com/micbuffa/BabylonJS_course) 
 de **Michel Buffa** et la documentation fournie par [Babylon.js](https://doc.babylonjs.com/).
