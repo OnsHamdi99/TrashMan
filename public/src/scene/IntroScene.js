@@ -87,22 +87,21 @@ playMusic(){
     //    background.stretch = BABYLON.GUI.Image.STRETCH_UNIFORM;
         const titleText = new BABYLON.GUI.TextBlock();
         titleText.text = "Trashman";
-        titleText.fontSize = 50
-        ;
+        titleText.fontSize = 80;
         titleText.color = "green";
         titleText.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
-        titleText.top = "-10%";
+        titleText.top = "-20%";
 
         const playButton = BABYLON.GUI.Button.CreateSimpleButton("playButton", "Play");
-        playButton.width = 0.2;
-        playButton.height = "20px";
+        playButton.width = 0.25;
+        playButton.height = "50px";
         playButton.color = "white";
         playButton.background = "green";
         playButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
         playButton.cornerRadius = 10;
-        playButton.fontSize = "12px";
+        playButton.fontSize = "30px";
         // Move the button down by 50% of its height
-        playButton.top = "20%";
+        playButton.top = "-8%";
         playButton.onPointerUpObservable.add(() => {
             soundLoader.PlaySoundAction(soundLoader.buttonClick);
             this.mainMenuActive = false;
@@ -128,10 +127,11 @@ playMusic(){
             // Create level 1 button
             const level1Button = BABYLON.GUI.Button.CreateSimpleButton("level1Button", "Level 1");
             level1Button.width = "150px";
-            level1Button.height = "30px";
+            level1Button.height = "40px";
             level1Button.color = "white";
             level1Button.background = "green";
-            level1Button.top = "10px";
+            level1Button.cornerRadius = 10;
+            level1Button.top = "-100px";
             level1Button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
             this.advancedTexture.addControl(level1Button);
             level1Button.onPointerUpObservable.add(() => { 
@@ -150,10 +150,11 @@ playMusic(){
             });
             const level2Button = BABYLON.GUI.Button.CreateSimpleButton("level2Button", "Level 2");
             level2Button.width = "150px";
-            level2Button.height = "30px";
+            level2Button.height = "40px";
             level2Button.color = "white";
             level2Button.background = "blue";
-            level2Button.top = "50px";
+            level2Button.cornerRadius = 10;
+            level2Button.top = "-50px";
             level2Button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
             level2Button.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
             this.advancedTexture.addControl(level2Button);

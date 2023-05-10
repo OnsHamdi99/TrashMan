@@ -64,14 +64,14 @@ class LevelOne {
         camera.radius = 8; // how far from the object to follow
         camera.heightOffset = 3; // how high above the object to place the camera
         camera.rotationOffset = 180; // the viewing angle
-        camera.cameraAcceleration = .1; // how fast to move
-        camera.maxCameraSpeed = 5; // speed limit
+        camera.cameraAcceleration = 1; // how fast to move
+        camera.maxCameraSpeed = 1; // speed limit
 
         return camera;
     }
     greateGround() {
         const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", this.scene);
-        groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement.jpg", this.scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement2.jpg", this.scene);
         const groundWidth = 10;
         const groundLength = 400;
 
