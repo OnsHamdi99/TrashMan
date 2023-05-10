@@ -173,48 +173,7 @@ class LevelTwo {
     this.endLoading = true;
 
   }
-  getObstacles() {
-    let tree1 = this.scene.getMeshByName("tree1");
-    let tree2 = this.scene.getMeshByName("tree2");
-    let tree3 = this.scene.getMeshByName("tree3");
-    let tree4 = this.scene.getMeshByName("tree4");
-    let tree5 = this.scene.getMeshByName("tree5");
-    let tree6 = this.scene.getMeshByName("tree6");
-    let tree7 = this.scene.getMeshByName("tree7");
-    let tree8 = this.scene.getMeshByName("tree8");
-    let tree9 = this.scene.getMeshByName("tree9");
-    let tree10 = this.scene.getMeshByName("tree10");
-    let tree11 = this.scene.getMeshByName("tree11");
-    let tree12 = this.scene.getMeshByName("tree12");
-    let tree13 = this.scene.getMeshByName("tree13");
-    let bush1 = this.scene.getMeshByName("bush1");
-    let bush2 = this.scene.getMeshByName("bush2");
-    let bush3 = this.scene.getMeshByName("bush3");
-    let bush4 = this.scene.getMeshByName("bush4");
-    let bush5 = this.scene.getMeshByName("bush5");
-    let bush6 = this.scene.getMeshByName("bush6");
-    let bush7 = this.scene.getMeshByName("bush7");
-    let bush8 = this.scene.getMeshByName("bush8");
-    let bush9 = this.scene.getMeshByName("bush9");
-    let bush10 = this.scene.getMeshByName("bush10");
-    let bush11 = this.scene.getMeshByName("bush11");
-    let bush12 = this.scene.getMeshByName("bush12");
-    let bush13 = this.scene.getMeshByName("bush13");
-    return [tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, tree11, tree12, tree13, bush1, bush2, bush3, bush4, bush5, bush6, bush7, bush8, bush9, bush10, bush11, bush12, bush13];
-  }
 
-  getTrashTab() {
-    let trash1 = this.scene.getMeshByName("trash1");
-    let trash2 = this.scene.getMeshByName("trash2");
-    let trash3 = this.scene.getMeshByName("trash3");
-    let trash4 = this.scene.getMeshByName("trash4");
-    let trash5 = this.scene.getMeshByName("trash5");
-    let trash6 = this.scene.getMeshByName("trash6");
-    let trash7 = this.scene.getMeshByName("trash7");
-    let trash8 = this.scene.getMeshByName("trash8");
-    let trash9 = this.scene.getMeshByName("trash9");
-    return [trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9];
-  }
   createTrees(x, y, z, size, name) {
     BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "tree.glb", this.scene, (meshes) => {
       let tree = meshes[0];
@@ -325,9 +284,7 @@ class LevelTwo {
         a.start(true, 1.0, a.from, a.to, false);
 
         let movementVector = new BABYLON.Vector3(0, 0, 0);
-        let obstacles = this.getObstacles();
-        let trash = this.getTrashTab();
-        let tree1 = this.scene.getMeshByName("tree1");
+
 
         if (this.inputStates.up) {
           check = true;
@@ -353,8 +310,8 @@ class LevelTwo {
           soundLoader.PlaySoundAction(soundLoader.gameOver);
           this.configuration.createNewEngine();
           this.scene.dispose();
-          soundLoader.PlaySoundAction(soundLoader.levelTwoMusic);
-          new LevelTwo(this.configuration);
+        
+          new IntroScene(this.configuration).levelsMenu() ;
         }
 
         if (this.inputStates.left) {

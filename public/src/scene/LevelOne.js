@@ -51,8 +51,49 @@ class LevelOne {
         this.greateGround();
         this.createTrees();
         this.createPortal();
-        this. createSkybox(this.scene)
+        this. createSkybox(this.scene); 
+        this.createInscructions();
     }
+  createInscructions(){
+// Create a new advancedDynamicTexture
+var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+// Create a rectangle
+var rect = new BABYLON.GUI.Rectangle();
+rect.width = "400px";
+rect.height = "100px";
+rect.color = "white";
+rect.cornerRadius = 20;
+rect.thickness = 4;
+rect.background = "black";
+rect.alpha = 0.8;
+
+// Create a text block
+var textBlock = new BABYLON.GUI.TextBlock();
+textBlock.text = "Use arrow keys to move and space to jump!";
+textBlock.color = "white";
+textBlock.fontSize = 24;
+textBlock.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_CENTER;
+textBlock.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_CENTER;
+
+// Add the text block to the rectangle
+rect.addControl(textBlock);
+
+// Position the rectangle in 3D space
+rect.linkOffsetX = "-190px";
+rect.linkOffsetY = "50px";
+rect.linkOffsetZ = "0px";
+rect.ignoreCameraViewport = true;
+rect.linkWithMesh(null);
+rect.position = new BABYLON.Vector3(-6, 3, 180);
+
+// Add the rectangle to the advancedDynamicTexture
+advancedTexture.addControl(rect);
+
+
+
+
+  }
     creerLumiere() {
         // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
         const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), this.scene);
