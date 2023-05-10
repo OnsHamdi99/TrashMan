@@ -45,14 +45,14 @@ Le personnage tombe et c'est le game over.
 ## Difficultés rencontrées
 
 - Pour éviter la duplication de code, on a souhaité utiliser une classe abstraite et des classes héritées, mais a rencontré des difficultés techniques qui ont finalement conduit à la création de classes séparément.
-- C'était la première fois que nous créons un jeu, ce qui a entraîné des difficultés dans l'apprentissage de la manipulation des mouvements.
+- C'était la première fois que nous créons un jeu, ce qui a entraîné des difficultés.
 
 ## Problèmes notés
 
-- Les scènes prenaient du temps à charger, ce qui pouvait causer de l'impatience chez les joueurs.
+- Les scènes prennent du temps à charger, ce qui pouvait causer de l'impatience chez les joueurs.
 - Il y avait beaucoup de duplication de code, ce qui rendait le code plus difficile à maintenir.
-- Le déplacement du personnage n'était pas fluide, ce qui pouvait causer de la frustration chez les joueurs.
 - La taille de l'écran ne s'adaptait pas aux changements, ce qui pouvait causer des problèmes de visibilité pour les joueurs.
+- Pas de gestion des collisions (en cours)
 
 ## Ressources
 
