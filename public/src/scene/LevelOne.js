@@ -158,7 +158,7 @@ particleSystem.start();
             if (hero.meshes.length > 0) {
             let main = hero.meshes[0];
             main.position.x = 0;
-            main.position.z = 200;
+            main.position.z = 196.6;
             main.position.y = 1.4;
 
             //main.frontVector = new BABYLON.Vector3(0, 0, 1);

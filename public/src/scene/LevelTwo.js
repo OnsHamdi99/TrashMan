@@ -23,6 +23,7 @@ class LevelTwo {
     this.isBushLoaded = false;
     this.isSardinaLoaded = false;
     this.endLoading = false;
+    this.score = 0;
   }
 
   async configureAssetManager() {
@@ -60,6 +61,8 @@ class LevelTwo {
     const skyboxMaterial = new BABYLON.StandardMaterial("skyBox", this.scene);
     skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./assets/images/skybox/skybox", this.scene);
     skybox.material = skyboxMaterial;
+
+
   }
 
   createFollowCamera(scene, target) {
@@ -170,7 +173,21 @@ class LevelTwo {
     this.createGrass(2.9, -50, 0, 0.01);
     this.createBushes(-2.9, -55, 0.4, 0.01, "bush12");
     this.createBushes(2.9, -50, 0.4, 0.01, "bush13");
+
+    this.createBanana(-2.9, 186, 0.4, 0.5, "trash");
+    this.createCoca(0, 149, 1, 0.5, "trash");
+    this.createBanana(-2.9, -16, 0.4, 0.5, "trash");
+    this.createCoca(2.9, -36, 1, 0.5, "trash");
+    this.createBanana(0, -103, 0.4, 0.5, "trash");
+    this.createCoca(-2.9, -170, 1, 0.5, "trash");
+
+
+
+
+
     this.endLoading = true;
+
+
 
   }
   getObstacles() {
@@ -205,14 +222,16 @@ class LevelTwo {
 
   getTrashTab() {
     let trash1 = this.scene.getMeshByName("trash1");
-    let trash2 = this.scene.getMeshByName("trash2");
-    let trash3 = this.scene.getMeshByName("trash3");
-    let trash4 = this.scene.getMeshByName("trash4");
-    let trash5 = this.scene.getMeshByName("trash5");
-    let trash6 = this.scene.getMeshByName("trash6");
-    let trash7 = this.scene.getMeshByName("trash7");
-    let trash8 = this.scene.getMeshByName("trash8");
-    let trash9 = this.scene.getMeshByName("trash9");
+    let trash2 = this.scene.getMeshByName("trash");
+    let trash3 = this.scene.getMeshByName("trash");
+    let trash4 = this.scene.getMeshByName("trash");
+    let trash5 = this.scene.getMeshByName("trash");
+    let trash6 = this.scene.getMeshByName("trash");
+    let trash7 = this.scene.getMeshByName("trash");
+    let trash8 = this.scene.getMeshByName("trash");
+    let trash9 = this.scene.getMeshByName("trash");
+
+
     return [trash1, trash2, trash3, trash4, trash5, trash6, trash7, trash8, trash9];
   }
   createTrees(x, y, z, size, name) {
@@ -223,11 +242,8 @@ class LevelTwo {
       tree.position.y = z;
       tree.scaling = new BABYLON.Vector3(size, size, size);
       tree.name = name;
-      tree.checkCollisions = true;
-      tree.computeWorldMatrix(true);
-      let boundingBox = tree.getBoundingInfo().boundingBox;
 
-      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBox", { height: 7, depth: 2, width: 2 }, this.scene);
+      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBoxTree", { height: 7, depth: 2, width: 2 }, this.scene);
       collideBox.checkCollisions = true;
       collideBox.position = new BABYLON.Vector3(x, z, y);
 
@@ -235,7 +251,7 @@ class LevelTwo {
       collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
       collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
       collideBoxMaterial.alpha = 0;
-      
+
       collideBox.material = collideBoxMaterial;
 
     });
@@ -252,9 +268,9 @@ class LevelTwo {
       sardina.scaling = new BABYLON.Vector3(size, size, size);
       sardina.name = name;
 
-      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBox", { height: 1.5, depth: 2, width: 2 }, this.scene);
+      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBoxSardina", { height: 0.9, depth: 2, width: 2 }, this.scene);
       collideBox.checkCollisions = true;
-      collideBox.position = new BABYLON.Vector3(x, z, y);
+      collideBox.position = new BABYLON.Vector3(x, 0, y);
 
       let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
       collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
@@ -263,229 +279,306 @@ class LevelTwo {
       collideBox.material = collideBoxMaterial;
     });
 
-
-    this.isSardinaLoaded = true;
   }
 
-  createGrass(x, y, z, size) {
-    BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "grass.glb", this.scene, (meshes) => {
-      let grass = meshes[0];
-      grass.position.x = x;
-      grass.position.z = y;
-      grass.position.y = z;
-      grass.scaling = new BABYLON.Vector3(size, size, size);
+    createBanana(x, y, z, size, name) {
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "banana.glb", this.scene, (meshes) => {
+        let banana = meshes[0];
+        banana.position.x = x;
+        banana.position.z = y;
+        banana.position.y = z;
+        banana.scaling = new BABYLON.Vector3(size, size, size);
+        banana.name = name;
 
-      let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBox", { height: 3.5, depth: 2, width: 2 }, this.scene);
-      collideBox.checkCollisions = true;
-      collideBox.position = new BABYLON.Vector3(x, z, y);
+        let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBoxSardina", { height: 0.9, depth: 2, width: 2 }, this.scene);
+        collideBox.checkCollisions = true;
+        collideBox.position = new BABYLON.Vector3(x, 0, y);
 
-      let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
-      collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
-      collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
-      collideBoxMaterial.alpha = 0;
-      collideBox.material = collideBoxMaterial;
-    });
+        let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
+        collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
+        collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
+        collideBoxMaterial.alpha = 0;
+        collideBox.material = collideBoxMaterial;
+      });
 
-    this.isGrassLoaded = true;
-  }
 
-  createBushes(x, y, z, size, name) {
-    BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "bush.glb", this.scene, (meshes) => {
-      let bush = meshes[0];
-      bush.position.x = x;
-      bush.position.z = y;
-      bush.position.y = z;
-      bush.scaling = new BABYLON.Vector3(size, size, size);
-      bush.name = name;
-    });
+      this.isSardinaLoaded = true;
+    }
 
-    this.isBushLoaded = true;
-  }
+    createCoca(x, y, z, size, name) {
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "coca-cola_can.glb", this.scene, (meshes) => {
+        let coke = meshes[0];
+        coke.position.x = x;
+        coke.position.z = y;
+        coke.position.y = z;
+        coke.scaling = new BABYLON.Vector3(size, size, size);
+        coke.name = name;
+
+        let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBoxSardina", { height: 0.9, depth: 2, width: 2 }, this.scene);
+        collideBox.checkCollisions = true;
+        collideBox.position = new BABYLON.Vector3(x, 0, y);
+
+        let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
+        collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
+        collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
+        collideBoxMaterial.alpha = 0;
+        collideBox.material = collideBoxMaterial;
+      });
+
+
+      this.isSardinaLoaded = true;
+    }
+
+    createGrass(x, y, z, size) {
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "grass.glb", this.scene, (meshes) => {
+        let grass = meshes[0];
+        grass.position.x = x;
+        grass.position.z = y;
+        grass.position.y = z;
+        grass.scaling = new BABYLON.Vector3(size, size, size);
+
+        let collideBox = new BABYLON.MeshBuilder.CreateBox("collideBoxGrass", { height: 3.5, depth: 2, width: 2 }, this.scene);
+        collideBox.checkCollisions = true;
+        collideBox.position = new BABYLON.Vector3(x, z, y);
+
+        let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
+        collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
+        collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
+        collideBoxMaterial.alpha = 0;
+        collideBox.material = collideBoxMaterial;
+      });
+
+      this.isGrassLoaded = true;
+    }
+
+    createBushes(x, y, z, size, name) {
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "bush.glb", this.scene, (meshes) => {
+        let bush = meshes[0];
+        bush.position.x = x;
+        bush.position.z = y;
+        bush.position.y = z;
+        bush.scaling = new BABYLON.Vector3(size, size, size);
+        bush.name = name;
+      });
+
+      this.isBushLoaded = true;
+    }
 
   async getHero() {
-    let hero = await BABYLON.SceneLoader.ImportMeshAsync("", "./assets/models/", "male.glb", this.scene);
-    if (hero.meshes.length > 0) {
-      let main = hero.meshes[0];
-      main.position.x = 0;
-      main.position.z = 196.6;
-      main.position.y = 1.4;
+      let hero = await BABYLON.SceneLoader.ImportMeshAsync("", "./assets/models/", "male.glb", this.scene);
+      if (hero.meshes.length > 0) {
+        let main = hero.meshes[0];
+        main.position.x = 0;
+        main.position.z = 196.6;
+        main.position.y = 1.4;
 
-      main.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+        main.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
 
-      main.name = "heroMain";
-      main.checkCollisions = true;
-      main.speed = 0.17;
+        main.name = "heroMain";
+        main.checkCollisions = true;
+        main.speed = 0.17;
 
-      let check = false;
-      let check2 = false;
+        let check = false;
+        let check2 = false;
+        let check3 = false;
+        let advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+        let score = new BABYLON.GUI.TextBlock("score");
+        score.text = "SCORE = " + this.score;
+        score.fontSize = "35px";
+        score.color = "white";
+        score.top = "420px";
+        score.left = "100px";
+        score.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_DOWN;
+        score.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_DOWN;
 
-      main.move = () => {
+        advancedTexture.addControl(score);
+        main.move = () => {
 
-        let a = this.scene.getAnimationGroupByName("Idle");
-        a.start(true, 1.0, a.from, a.to, false);
 
-        let movementVector = new BABYLON.Vector3(0, 0, 0);
-        let obstacles = this.getObstacles();
-        let trash = this.getTrashTab();
-        let tree1 = this.scene.getMeshByName("tree1");
 
-        if (this.inputStates.up) {
-          check = true;
-        }
+          let a = this.scene.getAnimationGroupByName("Idle");
+          a.start(true, 1.0, a.from, a.to, false);
 
-        if (check) {
-          console.log("in move function : up");
-          let a = this.scene.getAnimationGroupByName("Run");
-          a.start(false, 1.0, a.from, a.to, false);
-          movementVector.z -= 0.1;
-          main.onCollideObservable.add(
-            function () {
-              check2 = true;
-              console.log(check2);
-            }
-          );
-          this.inputStates.up = false;
-        }
+          let movementVector = new BABYLON.Vector3(0, 0, 0);
 
-        if (check2) {
-          this.configuration.scenes[0].dispose();
-          soundLoader.StopSoundAction(soundLoader.levelTwoMusic);
-          soundLoader.PlaySoundAction(soundLoader.gameOver);
-          this.configuration.createNewEngine();
-          this.scene.dispose();
-          soundLoader.PlaySoundAction(soundLoader.levelTwoMusic);
-          new LevelTwo(this.configuration);
-        }
 
-        if (this.inputStates.left) {
-          console.log(movementVector.x);
-          console.log("in move function : left");
-          let a = this.scene.getAnimationGroupByName("Run");
-          a.start(false, 1.5, a.from, a.to, false);
-          movementVector.x += 2;
-          this.inputStates.left = false;
-        }
-        if (this.inputStates.right) {
-          console.log("in move function : right");
-          let a = this.scene.getAnimationGroupByName("Run");
-          a.start(false, 2.0, a.from, a.to, false);
-          movementVector.x -= 2;
-          this.inputStates.right = false;
-        }
-        if (this.inputStates.space) {
-          console.log("in move function : space");
-          movementVector.y += 15;
-          movementVector.z -= 4;
-          let a = this.scene.getAnimationGroupByName("Jump");
-          a.start(false, 1.0, a.from, a.to, false);
-          this.inputStates.space = false;
-          movementVector.y -= 15;
-          let idle = this.scene.getAnimationGroupByName("Idle");
-          idle.start(true, 1.0, idle.from, idle.to, false);
-        }
-
-        if (movementVector.length() !== 0) {
-          movementVector = movementVector.normalize().scale(main.speed);
-          let newPosition = main.position.add(movementVector);
-          if (newPosition.x > 5) {
-            newPosition.x = 5;
-          } else if (newPosition.x < -5) {
-            newPosition.x = -5;
+          if (this.inputStates.up) {
+            check = true;
           }
-          if (newPosition.z > 200) {
-            newPosition.z = 200;
+
+          if (check) {
+            console.log("in move function : right");
+            let a = this.scene.getAnimationGroupByName("Run");
+            a.start(false, 1.0, a.from, a.to, false);
+            movementVector.z -= 0.1;
+            main.position.y = 1.4;
+            main.onCollideObservable.add(
+              function (m, evt) {
+                let msg = "Collision with: " + m.name;
+                if (m.name == "collideBoxSardina") {
+                  check3 = true;
+                  m.dispose();
+
+                } else {
+                  check2 = true;
+                }
+              }
+            );
+            this.inputStates.up = false;
           }
-          else if (newPosition.z < -196) {
+          if (check3) {
+            this.score = this.score + 1;
+            score.text = "SCORE : " + this.score;
+            score.fontSize = "35px";
+            score.color = "white";
+            score.top = "420px";
+            score.left = "100px";
+            score.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_DOWN;
+            score.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_DOWN;
+            check3 = false;
+          }
+          if (check2) {
             this.configuration.scenes[0].dispose();
             soundLoader.StopSoundAction(soundLoader.levelTwoMusic);
-            soundLoader.PlaySoundAction(soundLoader.gameWon);
+            soundLoader.PlaySoundAction(soundLoader.gameOver);
             this.configuration.createNewEngine();
             this.scene.dispose();
             soundLoader.PlaySoundAction(soundLoader.introMusic);
             new IntroScene(this.configuration);
-
           }
-          main.position = newPosition;
-          main.moveWithCollisions(movementVector);
+
+          if (this.inputStates.left) {
+            //console.log(movementVector.x);
+            console.log("in move function : left");
+            let a = this.scene.getAnimationGroupByName("Run");
+            a.start(false, 1.5, a.from, a.to, false);
+            movementVector.x += 2;
+            this.inputStates.left = false;
+          }
+          if (this.inputStates.right) {
+            console.log("in move function : right");
+            let a = this.scene.getAnimationGroupByName("Run");
+            a.start(false, 2.0, a.from, a.to, false);
+            movementVector.x -= 2;
+            this.inputStates.right = false;
+          }
+          if (this.inputStates.space) {
+            console.log("in move function : space");
+            movementVector.y += 15;
+            movementVector.z -= 4;
+            let a = this.scene.getAnimationGroupByName("Jump");
+            a.start(false, 1.0, a.from, a.to, false);
+            this.inputStates.space = false;
+            movementVector.y -= 15;
+            let idle = this.scene.getAnimationGroupByName("Idle");
+            idle.start(true, 1.0, idle.from, idle.to, false);
+          }
+
+          if (movementVector.length() !== 0) {
+            movementVector = movementVector.normalize().scale(main.speed);
+            let newPosition = main.position.add(movementVector);
+            if (newPosition.x > 5) {
+              newPosition.x = 5;
+            } else if (newPosition.x < -5) {
+              newPosition.x = -5;
+            }
+            if (newPosition.z > 200) {
+              newPosition.z = 200;
+            }
+            else if (newPosition.z < -196) {
+              this.configuration.scenes[0].dispose();
+              soundLoader.StopSoundAction(soundLoader.levelTwoMusic);
+              soundLoader.PlaySoundAction(soundLoader.gameWon);
+              this.configuration.createNewEngine();
+              this.scene.dispose();
+              soundLoader.PlaySoundAction(soundLoader.introMusic);
+              new IntroScene(this.configuration);
+
+            }
+            main.position = newPosition;
+            main.moveWithCollisions(movementVector);
+          }
+
+
+          else {
+            let a = this.scene.getAnimationGroupByName("Idle");
+            a.start(true, 1.0, a.from, a.to, false);
+          }
+
         }
 
-
-        else {
-          let a = this.scene.getAnimationGroupByName("Idle");
-          a.start(true, 1.0, a.from, a.to, false);
-        }
-
+        return main;
       }
 
-      return main;
+    }
+    /**
+     * charger le rendu de la scene
+     */
+    renderScene() {
+      this.hero.move();
+      this.scene.render();
+
+
+
+    }
+
+    modifySettings() {
+      this.scene.onPointerDown = () => {
+        if (!this.scene.alreadyLocked) {
+          console.log("requesting pointer lock");
+          this.canvas.requestPointerLock();
+        } else {
+          console.log("Pointer already locked");
+        }
+      };
+
+      document.addEventListener("pointerlockchange", () => {
+        let element = document.pointerLockElement || null;
+        if (element) {
+          // lets create a custom attribute
+          this.scene.alreadyLocked = true;
+        } else {
+          this.scene.alreadyLocked = false;
+        }
+      });
+
+      this.inputStates.left = false;
+      this.inputStates.right = false;
+      this.inputStates.up = false;
+      this.inputStates.down = false;
+      this.inputStates.space = false;
+
+
+      window.addEventListener(
+        "keydown",
+        (event) => {
+          if (event.key === "ArrowLeft" || event.key === "q" || event.key === "Q") {
+            this.inputStates.left = true;
+          } else if (
+            event.key === "ArrowUp" ||
+            event.key === "z" ||
+            event.key === "Z"
+          ) {
+            this.inputStates.up = true;
+          } else if (
+            event.key === "ArrowRight" ||
+            event.key === "d" ||
+            event.key === "D"
+          ) {
+            this.inputStates.right = true;
+          } else if (
+            event.key === "ArrowDown" ||
+            event.key === "s" ||
+            event.key === "S"
+          ) {
+            this.inputStates.down = true;
+          } else if (event.key === " ") {
+            this.inputStates.space = true;
+          }
+        },
+        false
+      );
     }
 
   }
-  /**
-   * charger le rendu de la scene
-   */
-  renderScene() {
-    this.hero.move();
-    this.scene.render();
-  }
-
-  modifySettings() {
-    this.scene.onPointerDown = () => {
-      if (!this.scene.alreadyLocked) {
-        console.log("requesting pointer lock");
-        this.canvas.requestPointerLock();
-      } else {
-        console.log("Pointer already locked");
-      }
-    };
-
-    document.addEventListener("pointerlockchange", () => {
-      let element = document.pointerLockElement || null;
-      if (element) {
-        // lets create a custom attribute
-        this.scene.alreadyLocked = true;
-      } else {
-        this.scene.alreadyLocked = false;
-      }
-    });
-
-    this.inputStates.left = false;
-    this.inputStates.right = false;
-    this.inputStates.up = false;
-    this.inputStates.down = false;
-    this.inputStates.space = false;
-
-
-    window.addEventListener(
-      "keydown",
-      (event) => {
-        if (event.key === "ArrowLeft" || event.key === "q" || event.key === "Q") {
-          this.inputStates.left = true;
-        } else if (
-          event.key === "ArrowUp" ||
-          event.key === "z" ||
-          event.key === "Z"
-        ) {
-          this.inputStates.up = true;
-        } else if (
-          event.key === "ArrowRight" ||
-          event.key === "d" ||
-          event.key === "D"
-        ) {
-          this.inputStates.right = true;
-        } else if (
-          event.key === "ArrowDown" ||
-          event.key === "s" ||
-          event.key === "S"
-        ) {
-          this.inputStates.down = true;
-        } else if (event.key === " ") {
-          this.inputStates.space = true;
-        }
-      },
-      false
-    );
-  }
-
-}
 export { LevelTwo };
