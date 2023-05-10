@@ -164,11 +164,8 @@ particleSystem.start();
               a.start(true, 1.0, a.from, a.to, false);
           
               let movementVector = new BABYLON.Vector3(0, 0, 0);
-              if (this.tree){
-                console.log(this.tree);
-                console.log("tree pos :" + this.tree.position.x);
-              }
-              if (this.tree && main.intersectsMesh(this.tree, false)) {
+
+              if (this.tree && main.intersectsMesh(this.tree, true)) {
                 
                 console.log("collision");
               }
@@ -179,13 +176,7 @@ particleSystem.start();
                   movementVector.z -= 1;
                   this.inputStates.up = false;
               } 
-              if (this.inputStates.down) {
-                  console.log("in move function : down");
-                  let a = this.scene.getAnimationGroupByName("Run");
-                  a.start(false, 1.5, a.from, a.to, false);
-                  movementVector.z += 1;
-                  this.inputStates.down = false;
-              }
+
               if (this.inputStates.left) {
                 console.log(movementVector.x);
                   console.log("in move function : left");
@@ -203,11 +194,15 @@ particleSystem.start();
               }
               if (this.inputStates.space) {
                   console.log("in move function : space");
+                  movementVector.y += 15;
+                  movementVector.z -= 4;
                   let a = this.scene.getAnimationGroupByName("Jump");
+                 
                   a.start(false, 1.0, a.from, a.to, false);
-               
-                  //movementVector.y += 1;
                   this.inputStates.space = false;
+                  movementVector.y -= 15;
+                 
+          
                   let idle = this.scene.getAnimationGroupByName("Idle");
                   idle.start(true, 1.0, idle.from, idle.to, false);
               }
