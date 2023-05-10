@@ -51,6 +51,7 @@ class LevelOne {
         this.greateGround();
         this.createTrees();
         this.createPortal();
+        this. createSkybox(this.scene)
     }
     creerLumiere() {
         // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
@@ -64,14 +65,14 @@ class LevelOne {
         camera.radius = 8; // how far from the object to follow
         camera.heightOffset = 3; // how high above the object to place the camera
         camera.rotationOffset = 180; // the viewing angle
-        camera.cameraAcceleration = .1; // how fast to move
-        camera.maxCameraSpeed = 5; // speed limit
+        camera.cameraAcceleration = 1; // how fast to move
+        camera.maxCameraSpeed = 1; // speed limit
 
         return camera;
     }
     greateGround() {
         const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", this.scene);
-        groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement.jpg", this.scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement2.jpg", this.scene);
         const groundWidth = 10;
         const groundLength = 400;
 
@@ -90,6 +91,20 @@ particleSystem.maxEmitBox = new BABYLON.Vector3(2, 40, 2);
 particleSystem.start();
 
 
+    }
+    createSkybox(scene) {
+
+      var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
+      var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxMaterial", scene);
+      skyboxMaterial.backFaceCulling = false;
+      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
+        "./assets/images/cubemap/",
+        scene
+      );
+      skyboxMaterial.reflectionTexture.coordinatesMode =
+        BABYLON.Texture.SKYBOX_MODE;
+      skyboxMaterial.disableLighting = true;
+      skybox.material = skyboxMaterial;
     }
     createPortal(){
       BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "portalLevel1.glb", this.scene, (meshes) => {
@@ -164,11 +179,8 @@ particleSystem.start();
               a.start(true, 1.0, a.from, a.to, false);
           
               let movementVector = new BABYLON.Vector3(0, 0, 0);
-              if (this.tree){
-                console.log(this.tree);
-                console.log("tree pos :" + this.tree.position.x);
-              }
-              if (this.tree && main.intersectsMesh(this.tree, false)) {
+
+              if (this.tree && main.intersectsMesh(this.tree, true)) {
                 
                 console.log("collision");
               }
@@ -179,13 +191,7 @@ particleSystem.start();
                   movementVector.z -= 1;
                   this.inputStates.up = false;
               } 
-              if (this.inputStates.down) {
-                  console.log("in move function : down");
-                  let a = this.scene.getAnimationGroupByName("Run");
-                  a.start(false, 1.5, a.from, a.to, false);
-                  movementVector.z += 1;
-                  this.inputStates.down = false;
-              }
+
               if (this.inputStates.left) {
                 console.log(movementVector.x);
                   console.log("in move function : left");
@@ -203,11 +209,15 @@ particleSystem.start();
               }
               if (this.inputStates.space) {
                   console.log("in move function : space");
+                  movementVector.y += 15;
+                  movementVector.z -= 4;
                   let a = this.scene.getAnimationGroupByName("Jump");
+                 
                   a.start(false, 1.0, a.from, a.to, false);
-               
-                  //movementVector.y += 1;
                   this.inputStates.space = false;
+                  movementVector.y -= 15;
+                 
+          
                   let idle = this.scene.getAnimationGroupByName("Idle");
                   idle.start(true, 1.0, idle.from, idle.to, false);
               }
