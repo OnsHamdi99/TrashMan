@@ -52,7 +52,8 @@ Le personnage tombe et c'est le game over.
 - Les scènes prennent du temps à charger, ce qui pouvait causer de l'impatience chez les joueurs.
 - Il y avait beaucoup de duplication de code, ce qui rendait le code plus difficile à maintenir.
 - La taille de l'écran ne s'adaptait pas aux changements, ce qui pouvait causer des problèmes de visibilité pour les joueurs.
-- Pas de gestion des collisions (en cours)
+- Les items à collecter ne disparaissent pas après pick up
+- La skybox ne s'affiche pas lorsque sur le lien d'hébergement, mais s'affiche localement
 
 ## Ressources
 
