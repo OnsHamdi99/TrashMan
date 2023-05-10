@@ -51,6 +51,7 @@ class LevelOne {
         this.greateGround();
         this.createTrees();
         this.createPortal();
+        this. createSkybox(this.scene)
     }
     creerLumiere() {
         // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
@@ -90,6 +91,20 @@ particleSystem.maxEmitBox = new BABYLON.Vector3(2, 40, 2);
 particleSystem.start();
 
 
+    }
+    createSkybox(scene) {
+
+      var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
+      var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxMaterial", scene);
+      skyboxMaterial.backFaceCulling = false;
+      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
+        "./assets/images/cubemap/",
+        scene
+      );
+      skyboxMaterial.reflectionTexture.coordinatesMode =
+        BABYLON.Texture.SKYBOX_MODE;
+      skyboxMaterial.disableLighting = true;
+      skybox.material = skyboxMaterial;
     }
     createPortal(){
       BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "portalLevel1.glb", this.scene, (meshes) => {

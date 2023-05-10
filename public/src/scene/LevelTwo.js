@@ -49,6 +49,7 @@ class LevelTwo {
     this.greateGround();
     this.createObstacles();
     this.createPortal();
+    this.createSkybox(this.scene);
   }
 
   creerLumiere() {
@@ -71,7 +72,21 @@ class LevelTwo {
 
     return camera;
   }
+  createSkybox(scene) {
 
+      var skybox = BABYLON.Mesh.CreateBox("skyBox", 1000.0, scene);
+      var skyboxMaterial = new BABYLON.StandardMaterial("skyBoxMaterial", scene);
+      skyboxMaterial.backFaceCulling = false;
+      skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture(
+        "./assets/images/cubemap/",
+        scene
+      );
+      skyboxMaterial.reflectionTexture.coordinatesMode =
+        BABYLON.Texture.SKYBOX_MODE;
+      skyboxMaterial.disableLighting = true;
+      skybox.material = skyboxMaterial;
+    }
+  
   greateGround() {
     const groundMaterial = new BABYLON.StandardMaterial("groundMaterial", this.scene);
     groundMaterial.diffuseTexture = new BABYLON.Texture("./assets/images/pavement3.jpg", this.scene);
