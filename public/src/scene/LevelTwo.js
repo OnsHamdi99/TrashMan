@@ -44,6 +44,10 @@ class LevelTwo {
      creerElementsScene() {
          this.creerLumiere();
          this.greateGround();
+         this.createPortal();
+         this.createBush(); 
+         this.createTour();
+         this.createTin();
      }
      creerLumiere() {
         // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
@@ -71,8 +75,49 @@ class LevelTwo {
         const ground = BABYLON.MeshBuilder.CreateGround("ground", { width: groundWidth, height: groundLength });
 
         ground.material = groundMaterial;
+        const particleSystem =BABYLON.ParticleHelper.CreateDefault(new BABYLON.Vector3(0, 0.5, -198));
+        
+        particleSystem.minSize = 1;
+        particleSystem.maxSize = 3;
+        
+particleSystem.minEmitBox = new BABYLON.Vector3(-2, 0, -2);
+particleSystem.maxEmitBox = new BABYLON.Vector3(2, 40, 2);
+
+particleSystem.start();
 
 
+    }
+    createPortal(){
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "portalLevel1.glb", this.scene, (meshes) => {
+        const portal = meshes[0];
+        portal.scaling = new BABYLON.Vector3(0.03, 0.03, 0.03);
+        portal.position = new BABYLON.Vector3(0, -1, -198);
+        portal.name = "portal";
+      });
+    }
+    createBush(){ 
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "bush.glb", this.scene, (meshes) => {
+        const bush = meshes[0];
+        bush.scaling = new BABYLON.Vector3(0.02, 0.02, 0.02);
+        bush.position = new BABYLON.Vector3(-2.5,1.5, -50);
+        bush.name = "bush";
+      });
+    }
+    createTour(){
+      BABYLON.SceneLoader.ImportMesh("", "./assets/models/", "tour.glb", this.scene, (meshes) => {
+        const tour = meshes[0];
+        tour.scaling = new BABYLON.Vector3(0.09, 0.09, 0.09);
+        tour.position = new BABYLON.Vector3(0, 0, -100);
+        tour.name = "tour";
+      });
+    }
+    createTin(){
+      BABYLON.SceneLoader.ImportMesh("", "./assets/trashItems/", "tin.glb", this.scene, (meshes) => {
+        const tin = meshes[0];
+        tin.scaling = new BABYLON.Vector3(1, 1, 1);
+        tin.position = new BABYLON.Vector3(2.5, -1, -100);
+        tin.name = "tin";
+      });
     }
     async getHero() {
         let hero = await BABYLON.SceneLoader.ImportMeshAsync(
