@@ -234,7 +234,8 @@ class LevelTwo {
       let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
       collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
       collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
-      collideBoxMaterial.alpha = 0.5;
+      collideBoxMaterial.alpha = 0;
+      
       collideBox.material = collideBoxMaterial;
 
     });
@@ -258,7 +259,7 @@ class LevelTwo {
       let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
       collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
       collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
-      collideBoxMaterial.alpha = 0.5;
+      collideBoxMaterial.alpha = 0;
       collideBox.material = collideBoxMaterial;
     });
 
@@ -281,7 +282,7 @@ class LevelTwo {
       let collideBoxMaterial = new BABYLON.StandardMaterial("collideBoxMaterial", this.scene);
       collideBoxMaterial.diffuseColor = new BABYLON.Color3.Yellow;
       collideBoxMaterial.emissiveColor = new BABYLON.Color3.Magenta;
-      collideBoxMaterial.alpha = 0.5;
+      collideBoxMaterial.alpha = 0;
       collideBox.material = collideBoxMaterial;
     });
 
@@ -333,11 +334,10 @@ class LevelTwo {
         }
 
         if (check) {
-          //console.log("in move function : up");
+          console.log("in move function : up");
           let a = this.scene.getAnimationGroupByName("Run");
           a.start(false, 1.0, a.from, a.to, false);
           movementVector.z -= 0.1;
-          //console.log(main.checkCollisions);
           main.onCollideObservable.add(
             function () {
               check2 = true;
@@ -350,10 +350,10 @@ class LevelTwo {
         if (check2) {
           this.configuration.scenes[0].dispose();
           soundLoader.StopSoundAction(soundLoader.levelTwoMusic);
-          soundLoader.PlaySoundAction(soundLoader.gameWon);
+          soundLoader.PlaySoundAction(soundLoader.gameOver);
           this.configuration.createNewEngine();
           this.scene.dispose();
-          soundLoader.PlaySoundAction(soundLoader.introMusic);
+          soundLoader.PlaySoundAction(soundLoader.levelTwoMusic);
           new LevelTwo(this.configuration);
         }
 
