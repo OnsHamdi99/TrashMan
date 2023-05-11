@@ -1,6 +1,6 @@
 # TrashMan
 Jeu réalisé dans le cadre du concours [Games On Web 2023](https://www.cgi.com/france/fr-fr/event/games-on-web-2023)
-ainsi que la [mineure DS4H](https://ds4h.univ-cotedazur.eu/education/minor-programming-3d-games-on-the-web) encadré
+ainsi que la [mineure DS4H](https://ds4h.univ-cotedazur.eu/education/minor-programming-3d-games-on-the-web) encadrée
 par le professeur **Michel Buffa**.
 
 Lien du jeu en ligne : [Jouer TrashMan!](https://onshamdi99.github.io/TrashMan/)
@@ -21,8 +21,9 @@ https://www.awesomescreenshot.com/video/17288836?key=a187fe15fa205b7fe0535c188f5
 ## Levels page
 
 L'idée principale est que le personnage principal doit courir et ramasser des déchets correspondants au niveau en cours (plastiques, organiques, verre, papier, etc.). S'il ramasse les bons déchets, il gagne des points, mais s'il ramasse les mauvais déchets, son score reste à zéro. Le jeu comporte également des obstacles que le joueur doit éviter en sautant ou en se déplaçant latéralement.
-
-Un des niveaux est situé dans les rues de Paris, en référence aux grèves de poubelles qui ont eu lieu dans la ville en mars 2023.
+Les premiers niveaux consistes à la familiarisation des commandes et enjeux du jeu.
+Un des niveaux à développer est situé dans les rues de Paris, en référence aux grèves de poubelles qui ont eu lieu dans la ville en mars 2023. 
+Les prochains niveaux à développer sont la récupération des déchets selon leur type.
 
 ![MenuLevel](https://wmpics.space/di-MTGF.png)
 
@@ -55,14 +56,14 @@ Le personnage tombe et c'est le game over.
 - La taille de l'écran ne s'adaptait pas aux changements, ce qui pouvait causer des problèmes de visibilité pour les joueurs.
 - Les items à collecter ne disparaissent pas après pick up
 - La skybox ne s'affiche pas lorsque sur le lien d'hébergement, mais s'affiche localement
--
+
 ### Gestion des collisions avec une box 
 ![image](https://github.com/OnsHamdi99/TrashMan/assets/77619552/0a27f9ca-00c2-4536-ad59-8833fe9b8fba)
 
 ## Ressources
 
 Pour les modèles 3D Valeria Lapshina a réalisé le modèle du mesh à l'aide de Blender, les modèles de déchets et d'obstacles on a pris d'une [ressource](https://sketchfab.com/3d-models) libre.
-Les [musiques](https://99sounds.org/free-sound-effects/) sont libres de droit.
+Les [musiques](https://99sounds.org/free-sound-effects/) utilisées sont libres de droit.
 
 Pour le code nous nous sommes appuyés sur le [cours](https://github.com/micbuffa/BabylonJS_course) 
 de **Michel Buffa** et la documentation fournie par [Babylon.js](https://doc.babylonjs.com/).
